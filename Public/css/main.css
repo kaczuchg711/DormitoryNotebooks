@@ -1,0 +1,83 @@
+html
+{
+    width: 100%;
+    height: 100%;
+}
+
+
+body
+{
+    font-family: Verdena;
+    font-size: 16px;
+    background: linear-gradient(180deg, rgba(8, 82, 166, 1) 0%, rgba(0, 87, 187, 1) 0%, rgba(255, 255, 255, 1));
+}
+body > *
+{
+    /*border-style: solid;*/
+}
+
+h2
+{
+    color: white;
+    text-align: center;
+    margin: 2em;
+}
+
+div.container
+{
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 0;
+}
+
+div.container > *
+{
+    /*border-style: double;*/
+}
+
+div.logo img
+{
+    width: 16em;
+    height: 16em;
+}
+
+div.login
+{
+    align-self: normal;
+    background: white;
+    border-radius: 2em;
+    padding: 2em;
+    margin-left: auto;
+    max-width: 25em;
+}
+
+div.login > *
+{
+    align-content: center;
+}
+
+form.login
+{
+    padding-top: 2em;
+    margin-left: 1em ;
+    display: flex;
+    flex-direction: column;
+
+}
+
+div.registration
+{
+    color: white;
+    background: rgba(38,153,251,1);
+}
+
+div.registration > *
+{
+    color: white;
+    background-: rgba(38,153,251,1);
+}
+
+form.login > *
+{
+    margin: 0.2em;
+}
