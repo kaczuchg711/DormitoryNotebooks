@@ -19,8 +19,9 @@
 
 		<div class="login">
 			<form class="login">
-				<h3>Logowanie</h3>
+				<h3 id="login">Logowanie</h3>
 				<p>Akademik</p>
+
 				<select>
 					<option>DS1 Rumcajs</option>
 					<option>DS2 Leon</option>
@@ -28,14 +29,16 @@
 					<option>DS4 Balon</option>
 					<option>DS B-1 Bydgoska</option>
 				</select>
+
 				<p>e-mail</p>
 				<input name="email" type="text" placeholder="email@email.com">
 				<p>hasło</p>
 				<input name="password" placeholder="password" type="password">
 				<button type="submit" class="btn btn-primary">Zaloguj</button>
-				<div class="registration">
+
+				<div class="registration_blue_bar">
 					Nie masz konta ?
-					<button class="btn btn-outline-primary">Zarejstruj</button>
+					<button class="btn btn-outline-primary" id="registration">Zarejstruj</button>
 				</div>
 
 
