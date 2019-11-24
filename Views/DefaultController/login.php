@@ -1,20 +1,27 @@
 <!Doctype html>
 <html lang="pl">
 <head title="Akademikowe Zeszyty">
-	<link rel="Stylesheet" type="text/css" href="../../Public/css/bootstrap-4.3.1-dist/css/bootstrap.css"/>
-	<link rel="Stylesheet" type="text/css" href="../../Public/css/bootstrap-4.3.1-dist/css/bootstrap-grid.css"/>
-	<link rel="Stylesheet" type="text/css" href="../../Public/css/bootstrap-4.3.1-dist/css/bootstrap-reboot.css"/>
-	<link rel="Stylesheet" type="text/css" href="../../Public/css/main.css"/>
+	<link rel="Stylesheet" type="text/css" href="Public/css/bootstrap-4.3.1-dist/css/bootstrap.css"/>
+	<link rel="Stylesheet" type="text/css" href="Public/css/bootstrap-4.3.1-dist/css/bootstrap-grid.css"/>
+	<link rel="Stylesheet" type="text/css" href="Public/css/bootstrap-4.3.1-dist/css/bootstrap-reboot.css"/>
+	<link rel="Stylesheet" type="text/css" href="Public/css/main.css"/>
 	<meta charset="UTF-8">
-		<meta http-equiv="refresh" content="1">
-
+	<!--		<meta http-equiv="refresh" content="1">-->
 	<title>Akademikowe Zeszyty</title>
 </head>
 <body>
 	<h2>Akademikowe zeszyty</h2>
 	<div class="container">
 		<div class="logo">
-			<img src="../../Public/img/pk_logo.png">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<img src="Public/img/pk_logo.png" alt="logo">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
 		</div>
 
 		<div class="login">
@@ -34,10 +41,11 @@
 				<input name="email" type="text" placeholder="email@email.com">
 				<p>hasło</p>
 				<input name="password" placeholder="password" type="password">
+
 				<button type="submit" class="btn btn-primary">Zaloguj</button>
 
 				<div class="registration_blue_bar">
-					Nie masz konta ?
+					<p>Nie masz konta ?</p>
 					<button class="btn btn-outline-primary" id="registration_button">Zarejstruj</button>
 				</div>
 

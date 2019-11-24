@@ -22,7 +22,6 @@
 		function render($variables = array(), $fileName = null)
 		{
 			$templatePath = $fileName ? dirname(__DIR__) . '/Views/' . get_class($this) . '/' . $fileName . '.php' : '';
-			echo "$templatePath";
 			$output = 'File not found';
 			if(file_exists($templatePath))
 			{
