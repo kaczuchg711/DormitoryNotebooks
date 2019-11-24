@@ -1,12 +1,12 @@
-body > *
-{
-    border-style: solid;
-}
+/*body > **/
+/*{*/
+/*    border-style: solid;*/
+/*}*/
 
-div.container > *
-{
-    border-style: double;
-}
+/*div.container > **/
+/*{*/
+/*    border-style: double;*/
+/*}*/
 
 
 html
@@ -17,7 +17,7 @@ html
 
 body
 {
-    font-family: Verdena;
+    font-family: Verdana, monotype;
     font-size: 16px;
     background: linear-gradient(180deg, rgba(8, 82, 166, 1) 0%, rgba(0, 87, 187, 1) 0%, rgba(255, 255, 255, 1));
 }
@@ -50,12 +50,14 @@ div.login
     padding: 1em 2em 3em;
     margin-left: auto;
     max-width: 25em;
+    align-content: center;
+
 }
 
-div.login > *
+form.login > *
 {
-    align-content: center;
-    margin: 0.1em;
+    margin: 0.2em;
+    max-height: 3em;
 }
 
 form.login
@@ -68,6 +70,7 @@ form.login
 
 div.registration_blue_bar
 {
+    display: block;
     color: white;
     padding: 0.5em;
     background: rgba(38,153,251,1);
@@ -79,14 +82,9 @@ div.registration_blue_bar > *
     background: rgba(38,153,251,1);
 }
 
-#login
+#registration_button
 {
-    padding-bottom: 1em;
+    margin-top: -0.15em;
     align-self: center;
 }
 
-form.login > *
-{
-    margin: 0.2em;
-    max-height: 3em;
-}
