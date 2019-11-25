@@ -1,6 +1,7 @@
 <?php
 
 	require_once 'Controllers/DefaultController.php';
+	require_once 'Controllers/SecureController.php';
 
 	class Routing
 	{
@@ -10,23 +11,21 @@
 		{
 			$this->routes =
 				[
-					'board' =>
-						[
-							'controller' => 'BoardController',
-							'action' => 'getLatestPhotos'
-						],
 					'login' =>
 						[
-							'controller' =>'DefaultController',
+							'controller' => 'SecureController',
 							'action' => 'login'
-						]
-
+						],
+					'home' =>
+						[
+							'controller' => 'DefaultController',
+							'action' => 'home'
+						],
 				];
 		}
 
 		public function run()
 		{
-
 			$page = isset($_GET['page']) ? $_GET['page'] : 'login';
 
 			if(isset($this->routes[$page]))

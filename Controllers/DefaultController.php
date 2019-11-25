@@ -18,4 +18,11 @@ class DefaultController extends AppController
 	{
 		return $this->render([], 'login');
 	}
+
+	public function home()
+	{
+		return $this->render([], 'home');
+	}
+
+
 }
