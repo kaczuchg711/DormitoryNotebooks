@@ -36,6 +36,7 @@ div.container
     grid-template-columns: 50% 50%;
     padding: 0;
 }
+
 div.logo
 {
     display: grid;
