@@ -9,20 +9,15 @@ class DefaultController extends AppController
 		parent::__construct();
 	}
 
-	public function index()
-	{
-		return $this->render([], 'index');
-	}
-
-	public function login()
-	{
-		return $this->render([], 'login');
-	}
 
 	public function home()
 	{
 		return $this->render([], 'home');
 	}
 
+	public function laundry()
+	{
+		return $this->render([], 'laundry');
+	}
 
 }

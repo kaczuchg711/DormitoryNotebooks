@@ -7,19 +7,24 @@
 	<link rel="Stylesheet" type="text/css" href="Public/css/style.css"/>
 	<meta charset="UTF-8">
 	<!--		<meta http-equiv="refresh" content="1">-->
-	<title>Akademikowe Zeszyty</title>
-	<meta http-equiv="refresh" content="1">
+	<title>home</title>
+	<!--	<meta http-equiv="refresh" content="1">-->
 </head>
 <body>
+
 	<h2>Witaj<br>Co chcesz zrobić ?</h2>
 
+
 	<div class="button_container">
-		<button class="home_button">Skorzystać z pralni</button>
+		<form action="?page=laundry" method="post">
+			<button class="home_button">Skorzystać z pralni</button>
+		</form>
 		<button class="home_button">Zgłosić usterkę</button>
 		<button class="home_button">Wynająć salę z bilardem</button>
 		<button class="home_button">Wypożyczyć odkurzacz</button>
 		<button class="home_button">Wypożyczyć suszarkę</button>
 	</div>
+	</form>
 
 </body>
 </html>

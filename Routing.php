@@ -21,6 +21,11 @@
 							'controller' => 'DefaultController',
 							'action' => 'home'
 						],
+					'laundry' =>
+						[
+							'controller' => 'DefaultController',
+							'action' => 'laundry'
+						],
 				];
 		}
 
