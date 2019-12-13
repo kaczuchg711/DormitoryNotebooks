@@ -112,3 +112,33 @@ div.registration_blue_bar p
 {
     background: rgb(0,105,217);
 }
+
+@media screen and (max-width: 600px)
+{
+    body
+    {
+
+    }
+    div.container
+    {
+        display: flex;
+        flex-direction: column;
+    }
+
+    div.logo {
+
+    }
+
+    div.login {
+        align-self: normal;
+        background:
+                white;
+        border-radius: 2em;
+        padding: 1em 2em 3em;
+        margin-left: auto;
+        max-width: 25em;
+        align-content: center;
+        border-style: solid;
+        border-width: 0.15em;
+    }
+}
