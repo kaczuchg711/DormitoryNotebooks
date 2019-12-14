@@ -1,5 +1,5 @@
 <?php
-// pytanie do prowadzacego dlaczego tu nie jest potrzebne ../
+	// pytanie do prowadzacego dlaczego tu nie jest potrzebne ../
 	require_once "AppController.php";
 	require_once "Database.php";
 
@@ -10,11 +10,6 @@
 			parent::__construct();
 		}
 
-		public function index()
-		{
-			return $this->render([], 'index');
-		}
-
 		public function login()
 		{
 
@@ -23,35 +18,30 @@
 				$email = $_POST['email'];
 				$password = $_POST['password'];
 
-				$servername = "localhost";
-				$username = "tkacza";
-				$dbpassword = "Pomidorowa4!";
-				$dbname = 'Dorm';
-
 				try
 				{
-					$conn = new PDO("mysql:host=$servername;dbname=Dorm", $username, $dbpassword);// set the PDO error mode to exception
-					$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-					$sql = "SELECT email,password FROM Users;";
-					$result = $conn->query($sql);
+					$db = new Database();
+					$db->connect();
+					$dbupassword = $db->get_password($email);
 
-					$result_array = $result->fetch();
 
-					$dbemail = $result_array[0];
-					$dbupassword = $result_array[1];
+					$db->disconnect();
 
-					if($dbemail == $email and $dbupassword == $password)
+					if($dbupassword == $password)
 					{
-						$result = null;
-						$conn = null;
 						$url = "http://$_SERVER[HTTP_HOST]/";
-						header("Location: {$url}/DormitoryNotebooks/?page=home");
+						header("Location: {$url}/DormitoryNotebooks?page=home");
 					}
+					else
+					{
 
-					//					die('zle' . '<br>' . $dbemail . '<br>' . $email . '<br>' . $dbupassword . '<br>' . $password);
-					$result = null;
-					$conn = null;
+						$this->render([], 'login');
+						$_POST['email'] = null;
+						$_POST['password'] = null;
+						$url = "http://$_SERVER[HTTP_HOST]/";
+						header("Location: {$url}/DormitoryNotebooks/?page=login");
+					}
 
 				}
 				catch(PDOException $e)
@@ -59,6 +49,8 @@
 					die("Connection failed: " . $e->getMessage());
 				}
 			}
+			$_POST['email'] = null;
+			$_POST['password'] = null;
 
 			return $this->render([], 'login');
 
