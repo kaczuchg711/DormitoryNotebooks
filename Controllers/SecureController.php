@@ -1,6 +1,7 @@
 <?php
-
+// pytanie do prowadzacego dlaczego tu nie jest potrzebne ../
 	require_once "AppController.php";
+	require_once "Database.php";
 
 	class SecureController extends AppController
 	{
@@ -17,7 +18,6 @@
 		public function login()
 		{
 
-
 			if(!empty($_POST['email']))
 			{
 				$email = $_POST['email'];
@@ -26,6 +26,8 @@
 				$servername = "localhost";
 				$username = "tkacza";
 				$dbpassword = "Pomidorowa4!";
+				$dbname = 'Dorm';
+
 				try
 				{
 					$conn = new PDO("mysql:host=$servername;dbname=Dorm", $username, $dbpassword);// set the PDO error mode to exception
@@ -47,7 +49,7 @@
 						header("Location: {$url}/DormitoryNotebooks/?page=home");
 					}
 
-					die('zle' . '<br>' . $dbemail . '<br>' . $email . '<br>' . $dbupassword . '<br>' . $password);
+					//					die('zle' . '<br>' . $dbemail . '<br>' . $email . '<br>' . $dbupassword . '<br>' . $password);
 					$result = null;
 					$conn = null;
 
@@ -56,14 +58,9 @@
 				{
 					die("Connection failed: " . $e->getMessage());
 				}
-
-
-			}
-			else
-			{
-				return $this->render([], 'login');
 			}
 
+			return $this->render([], 'login');
 
 		}
 
