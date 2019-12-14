@@ -13,15 +13,7 @@
 	<h2>Akademikowe zeszyty</h2>
 	<div class="container">
 		<div class="logo">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
 			<img src="Public/img/pk_logo.png" alt="logo">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
 		</div>
 
 		<div class="login">
@@ -43,17 +35,20 @@
 				<input name="password" placeholder="password" type="password">
 				<div>
 					<?php
-						if(!empty($variables[0]))
+						if(!empty($variables))
 						{
 							echo $variables[0];
 						}
 					?>
 				</div>
+
 				<button type="submit" class="btn btn-primary">Zaloguj</button>
 
 				<div class="registration_blue_bar">
+
 					<p>Nie masz konta ?</p>
 					<button class="btn btn-outline-primary" id="registration_button">Zarejstruj</button>
+
 				</div>
 
 			</form>
