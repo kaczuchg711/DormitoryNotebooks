@@ -25,7 +25,7 @@
 		</div>
 
 		<div class="login">
-			<form class="login" action="?page=home" method="POST">
+			<form class="login" action="?page=login" method="POST">
 				<h3 id="login">Logowanie</h3>
 				<p>Akademik</p>
 
