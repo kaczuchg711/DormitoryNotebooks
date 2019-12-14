@@ -52,8 +52,9 @@ button.home_button
     height: 10em;
     margin: 0.5em;
     color: white;
-    background: radial-gradient(rgb(35, 147, 252),#1968aa, rgb(19, 77, 125),rgb(19, 77, 125));
+    background: radial-gradient(rgb(35, 147, 252), #1968aa, rgb(19, 77, 125), rgb(19, 77, 125));
 }
+
 /*pralnia*/
 
 
@@ -65,12 +66,12 @@ div.table_container
 
 .table-striped
 {
-    background: rgba(255,255,255,0.8);
+    background: rgba(255, 255, 255, 0.8);
     width: 100%;
     border-style: solid;
 }
 
-table.table-striped > tr, td ,th
+table.table-striped > tr, td, th
 {
     padding: 15px;
     text-align: center;

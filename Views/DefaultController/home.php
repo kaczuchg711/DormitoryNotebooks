@@ -14,7 +14,6 @@
 
 	<h2>Witaj<br>Co chcesz zrobić ?</h2>
 
-
 	<div class="button_container">
 		<form action="?page=laundry" method="post">
 			<button class="home_button">Skorzystać z pralni</button>

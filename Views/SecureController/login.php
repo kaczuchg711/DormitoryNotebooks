@@ -41,14 +41,20 @@
 				<input name="email" type="text" placeholder="email@email.com">
 				<p>hasło</p>
 				<input name="password" placeholder="password" type="password">
-
+				<div>
+					<?php
+						if(!empty($variables[0]))
+						{
+							echo $variables[0];
+						}
+					?>
+				</div>
 				<button type="submit" class="btn btn-primary">Zaloguj</button>
 
 				<div class="registration_blue_bar">
 					<p>Nie masz konta ?</p>
 					<button class="btn btn-outline-primary" id="registration_button">Zarejstruj</button>
 				</div>
-
 
 			</form>
 		</div>

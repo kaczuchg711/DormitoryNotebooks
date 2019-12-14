@@ -15,18 +15,20 @@
 
 			if(!empty($_POST['email']))
 			{
+
 				$email = $_POST['email'];
 				$password = $_POST['password'];
 
 				try
 				{
-
 					$db = new Database();
 					$db->connect();
 					$dbupassword = $db->get_password($email);
-
-
 					$db->disconnect();
+					if($dbupassword == false)
+					{
+						return $this->render(["wrong login"], 'login');
+					}
 
 					if($dbupassword == $password)
 					{
@@ -35,26 +37,16 @@
 					}
 					else
 					{
-
-						$this->render([], 'login');
-						$_POST['email'] = null;
-						$_POST['password'] = null;
-						$url = "http://$_SERVER[HTTP_HOST]/";
-						header("Location: {$url}/DormitoryNotebooks/?page=login");
+						return $this->render(["wrong password"], 'login');
 					}
-
 				}
 				catch(PDOException $e)
 				{
 					die("Connection failed: " . $e->getMessage());
 				}
+
 			}
-			$_POST['email'] = null;
-			$_POST['password'] = null;
 
 			return $this->render([], 'login');
-
 		}
-
-
 	}
