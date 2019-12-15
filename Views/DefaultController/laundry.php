@@ -12,6 +12,17 @@
 </head>
 <body>
 
+	<!--	--><?php
+		//		while ($row = mysql_fetch_array($query)) {
+		//			echo "<tr>";
+		//			echo "<td>".$row[ID]."</td>";
+		//			echo "<td>".$row[Name]."</td>";
+		//			echo "<td>".$row[Title]."</td>";
+		//			echo "</tr>";
+		//		}
+		//
+		//	?>
+
 	<h2>Pralnia</h2>
 	<div class="table_container">
 		<table class="table-striped">
@@ -36,15 +47,45 @@
 				<td>12:17</td>
 				<td>3</td>
 			</tr>
-			<tr>
-				<td>01.01.16</td>
-				<td>Urszula</td>
-				<td>Marciniak</td>
-				<td>44</td>
-				<td>11:58</td>
-				<td>12:17</td>
-				<td>3</td>
-			</tr>
+			<?php
+				$rows =
+					[
+						row1 =>
+							[
+								'data' => '01.01.16',
+								'imię' => 'Urszula',
+								'nazwisko' => 'Marciniak',
+								'numer pokoju' => 44,
+								'godzina pobrania' => '11:58',
+								'godzina oddania' => '12:17',
+								'nr pralni' => 2,
+							],
+						row2 =>
+							[
+								'data' => '01.01.16',
+								'imię' => 'Urszula',
+								'nazwisko' => 'Marciniak',
+								'numer pokoju' => 44,
+								'godzina pobrania' => '11:58',
+								'godzina oddania' => '12:17',
+								'nr pralni' => 22,
+							]
+					];
+
+				foreach($rows as $rowa)
+				{
+					echo "<tr>";
+					echo "<td>" . $rowa['data'] . "</td>";
+					echo "<td>" . $rowa['imię'] . "</td>";
+					echo "<td>" . $rowa['nazwisko'] . "</td>";
+					echo "<td>" . $rowa['numer pokoju'] . "</td>";
+					echo "<td>" . $rowa['godzina pobrania'] . "</td>";
+					echo "<td>" . $rowa["godzina oddania"] . "</td>";
+					echo "<td>" . $rowa["nr pralni"] . "</td>";
+					echo "</tr>";
+				}
+
+			?>
 			</tbody>
 		</table>
 	</div>
