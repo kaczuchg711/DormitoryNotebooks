@@ -81,7 +81,7 @@ form.login input, form.login select, form.login button
 
 form.login button
 {
-    margin: 5% 0 5% 0 ;
+    margin: 5% 0 5% 0;
 }
 
 form.login > p
@@ -129,12 +129,8 @@ div.registration_blue_bar p
 
 #registration_button:hover
 {
-    background: rgb(0,105,217);
+    background: rgb(0, 105, 217);
 }
-
-
-
-
 
 
 @media screen and (max-width: 900px)

@@ -38,50 +38,30 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr>
-				<td>01.01.16</td>
-				<td>Urszula</td>
-				<td>Marciniak</td>
-				<td>44</td>
-				<td>11:58</td>
-				<td>12:17</td>
-				<td>3</td>
-			</tr>
 			<?php
-				$rows =
-					[
-						row1 =>
-							[
-								'data' => '01.01.16',
-								'imię' => 'Urszula',
-								'nazwisko' => 'Marciniak',
-								'numer pokoju' => 44,
-								'godzina pobrania' => '11:58',
-								'godzina oddania' => '12:17',
-								'nr pralni' => 2,
-							],
-						row2 =>
-							[
-								'data' => '01.01.16',
-								'imię' => 'Urszula',
-								'nazwisko' => 'Marciniak',
-								'numer pokoju' => 44,
-								'godzina pobrania' => '11:58',
-								'godzina oddania' => '12:17',
-								'nr pralni' => 22,
-							]
-					];
 
-				foreach($rows as $rowa)
+				require_once "Database.php";
+				$db = new Database();
+				$db->connect();
+				$res = $db->get_laundry_log();
+				$db->disconnect();
+
+
+
+				while($row = $res->fetch(PDO::FETCH_NUM))
 				{
 					echo "<tr>";
-					echo "<td>" . $rowa['data'] . "</td>";
-					echo "<td>" . $rowa['imię'] . "</td>";
-					echo "<td>" . $rowa['nazwisko'] . "</td>";
-					echo "<td>" . $rowa['numer pokoju'] . "</td>";
-					echo "<td>" . $rowa['godzina pobrania'] . "</td>";
-					echo "<td>" . $rowa["godzina oddania"] . "</td>";
-					echo "<td>" . $rowa["nr pralni"] . "</td>";
+//					echo "<td>" . $row[0] . "</td>";
+//					echo "<td>" . $row[1] . "</td>";
+//					echo "<td>" . $row[2] . "</td>";
+//					echo "<td>" . $row[3] . "</td>";
+//					echo "<td>" . $row[4] . "</td>";
+//					echo "<td>" . $row[5] . "</td>";
+//					echo "<td>" . $row[6] . "</td>";
+					foreach($row as $x)
+					{
+						echo "<td>" . $x . "</td>";
+					}
 					echo "</tr>";
 				}
 
