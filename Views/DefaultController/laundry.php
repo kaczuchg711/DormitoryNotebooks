@@ -46,15 +46,28 @@
 				$res = $db->get_laundry_log();
 				$db->disconnect();
 
+
+
+				$size = $res->rowCount();
+
+				$array = array_fill(0, $size, null);
+
+//				invert
 				while($row = $res->fetch(PDO::FETCH_NUM))
 				{
-					echo "<tr>";
-					foreach($row as $x)
+					$array[--$size] = $row;
+				}
+
+				echo "<tr>";
+				foreach($array as $x)
+				{
+					foreach($x as $y)
 					{
-						echo "<td>" . $x . "</td>";
+						echo "<td>" . $y . "</td>";
 					}
 					echo "</tr>";
 				}
+				echo "</tr>";
 
 			?>
 			</tbody>
