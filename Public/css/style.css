@@ -83,6 +83,7 @@ div.small_container
     margin-top: 4em;
     text-align: center;
     width: 15%;
-    margin-left: 40%;
+    margin-left: auto;
+    margin-right: auto;
 }
 

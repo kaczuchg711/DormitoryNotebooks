@@ -46,18 +46,9 @@
 				$res = $db->get_laundry_log();
 				$db->disconnect();
 
-
-
 				while($row = $res->fetch(PDO::FETCH_NUM))
 				{
 					echo "<tr>";
-//					echo "<td>" . $row[0] . "</td>";
-//					echo "<td>" . $row[1] . "</td>";
-//					echo "<td>" . $row[2] . "</td>";
-//					echo "<td>" . $row[3] . "</td>";
-//					echo "<td>" . $row[4] . "</td>";
-//					echo "<td>" . $row[5] . "</td>";
-//					echo "<td>" . $row[6] . "</td>";
 					foreach($row as $x)
 					{
 						echo "<td>" . $x . "</td>";
@@ -78,7 +69,21 @@
 			<option>3</option>
 		</select>
 		<button class="btn btn-primary">zarezerwuj</button>
+		<br/>
+		<br/>
+		<p>aktualny czas</p>
+		<p id="demo"></p>
 	</div>
+
+	<script>
+        var myVar = setInterval(myTimer, 1000);
+
+        function myTimer()
+		{
+            var d = new Date();
+            document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+        }
+	</script>
 
 </body>
 </html>
