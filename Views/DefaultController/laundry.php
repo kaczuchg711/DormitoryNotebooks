@@ -11,18 +11,6 @@
 	<!--	<meta http-equiv="refresh" content="1">-->
 </head>
 <body>
-
-	<!--	--><?php
-		//		while ($row = mysql_fetch_array($query)) {
-		//			echo "<tr>";
-		//			echo "<td>".$row[ID]."</td>";
-		//			echo "<td>".$row[Name]."</td>";
-		//			echo "<td>".$row[Title]."</td>";
-		//			echo "</tr>";
-		//		}
-		//
-		//	?>
-
 	<h2>Pralnia</h2>
 	<div class="table_container">
 		<table class="table-striped">
@@ -46,24 +34,23 @@
 				$res = $db->get_laundry_log();
 				$db->disconnect();
 
-
-
 				$size = $res->rowCount();
+
+				//				invert
 
 				$array = array_fill(0, $size, null);
 
-//				invert
 				while($row = $res->fetch(PDO::FETCH_NUM))
 				{
 					$array[--$size] = $row;
 				}
 
 				echo "<tr>";
-				foreach($array as $x)
+				foreach($array as $line)
 				{
-					foreach($x as $y)
+					foreach($line as $cel)
 					{
-						echo "<td>" . $y . "</td>";
+						echo "<td>" . $cel . "</td>";
 					}
 					echo "</tr>";
 				}
@@ -91,8 +78,7 @@
 	<script>
         var myVar = setInterval(myTimer, 1000);
 
-        function myTimer()
-		{
+        function myTimer() {
             var d = new Date();
             document.getElementById("demo").innerHTML = d.toLocaleTimeString();
         }

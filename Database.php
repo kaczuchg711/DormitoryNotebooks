@@ -27,7 +27,10 @@
 					"mysql:host=$this->host;dbname=$this->database",
 					$this->username,
 					$this->password
+
 				);
+
+				$this->conn->exec("set names utf8");
 
 				// set the PDO error mode to exception
 				$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -43,6 +46,8 @@
 		{
 			$this->conn = null;
 		}
+
+
 
 		public function get_password($email)
 		{
@@ -78,32 +83,14 @@
 					order by Laundries_logs.id_laundries_logs desc
 					Limit 3';
 
+	
 			$result = $this->conn->query($sql);
 			if($result->rowCount() == 0)
 			{
 				die('error in get_laundry_log');
 			}
+
+
 			return $result;
 		}
 	}
-	//
-	//	$db = new Database();
-	//
-	//	$db->connect();
-	//
-	//	$res = $db->get_laundry_log();
-	//
-	//	while($row = $res->fetch())
-	//	{
-	//		foreach($row as $x)
-	//		{
-	//			echo $x.' ';
-	//		}
-	//		echo '<br>';
-	//
-	//	}
-	//
-	//	$db->disconnect();
-	//
-	//
-	//	die('koniec');
