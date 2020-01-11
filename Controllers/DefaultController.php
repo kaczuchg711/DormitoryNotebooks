@@ -16,7 +16,10 @@
 
 		public function laundry()
 		{
+
+
 			return $this->render([], 'laundry');
 		}
+
 
 	}

@@ -63,24 +63,27 @@
 
 	<div class="small_container">
 		<p>wybierz pralnię</p>
-		<select>
-			<option>1</option>
-			<option>2</option>
-			<option>3</option>
-		</select>
-		<button class="btn btn-primary">zarezerwuj</button>
+
+		<form action="?page=laundry" method="post">
+			<select>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+			</select>
+			<button class="btn btn-primary">zarezerwuj</button>
+		</form>
 		<br/>
-		<br/>
-		<p>aktualny czas</p>
-		<p id="demo"></p>
+
+		<p id="t"></p>
 	</div>
 
 	<script>
         var myVar = setInterval(myTimer, 1000);
 
-        function myTimer() {
+        function myTimer()
+		{
             var d = new Date();
-            document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+            document.getElementById("t").innerHTML = "aktualny czas: <br>" + d.toLocaleTimeString();
         }
 	</script>
 

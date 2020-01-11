@@ -84,7 +84,7 @@ CREATE TABLE `Laundries_logs` (
   KEY `id_laundry` (`id_laundry`),
   CONSTRAINT `id_laundry` FOREIGN KEY (`id_laundry`) REFERENCES `Laundries` (`id_laundry`),
   CONSTRAINT `id_occupying_user` FOREIGN KEY (`id_occupying_user`) REFERENCES `Users` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `Laundries_logs` (
 
 LOCK TABLES `Laundries_logs` WRITE;
 /*!40000 ALTER TABLE `Laundries_logs` DISABLE KEYS */;
-INSERT INTO `Laundries_logs` VALUES (1,'2020-01-06','14:00:00','16:00:00',4,10),(33,'2020-01-04','16:00:00','18:00:00',5,15),(34,'2020-01-05','12:00:00','14:00:00',4,14),(35,'2020-01-05','14:55:00','16:55:00',6,13),(36,'2020-01-06','14:00:00','16:00:00',4,8),(37,'2020-01-06','13:00:00','15:00:00',6,15);
+INSERT INTO `Laundries_logs` VALUES (1,'2020-01-06','14:00:00','16:00:00',4,10),(33,'2020-01-04','16:00:00','18:00:00',5,15),(34,'2020-01-05','12:00:00','14:00:00',4,14),(35,'2020-01-05','14:55:00','16:55:00',6,13),(36,'2020-01-06','14:00:00','16:00:00',4,8),(37,'2020-01-06','13:00:00','15:00:00',6,15),(38,'2020-01-11','16:00:00','18:00:00',NULL,NULL);
 /*!40000 ALTER TABLE `Laundries_logs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,8 +176,6 @@ CREATE TABLE `Users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-
-
 --
 -- Dumping data for table `Users`
 --
@@ -187,6 +185,51 @@ LOCK TABLES `Users` WRITE;
 INSERT INTO `Users` VALUES (5,'user1@user1.com','user1','pas1','sfdsf','2020-01-05',1,16,3),(8,'user2@user2.com','user2','pas2','sdfsdfgsdg','2020-01-01',1,17,4),(9,'user3@user3.com','user3','pas3','dgfsdffgsd','2020-01-02',1,18,3),(10,'user4@user4.com','user4','pas4','sdgdsgf','2020-01-03',1,19,3),(11,'user5@user5.com','user5','pas5','dfgdsg','2020-01-02',1,20,3),(12,'user6@user6.com','user6','pas6','dgdsg','2020-01-04',1,21,5),(13,'user7@user7.com','user7','pas7','dsfgdfg','2020-01-02',1,22,6),(14,'user8@user8.com','user8','pas8','sdgsdg','2020-01-03',1,23,7),(15,'user9@user9.com','user9','pas9','sdgdsgf','2020-01-01',1,24,7),(16,'user10@user10.com','user10','pas10','sdgfdg','2020-01-05',1,25,4),(17,'admin@admin.com','admin','admin','sdgfdsg','2020-01-01',2,26,NULL);
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`tkacza`@`localhost`*/ /*!50003 TRIGGER clear_log_befor_user_del
+    Before DELETE
+    ON Users
+    FOR EACH ROW
+BEGIN
+    UPDATE Laundries_logs
+    set Laundries_logs.id_occupying_user = null
+    where Laundries_logs.id_occupying_user = old.id_user;
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`tkacza`@`localhost`*/ /*!50003 TRIGGER clear_userdetails_after_user_del
+    after DELETE
+    ON Users
+    FOR EACH ROW
+BEGIN
+    DELETE FROM User_details
+    WHERE (Old.id_user_details = User_details.id_user_details);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -197,4 +240,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-10 19:17:41
+-- Dump completed on 2020-01-11 16:40:31
