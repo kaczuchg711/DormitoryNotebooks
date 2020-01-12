@@ -84,7 +84,7 @@ CREATE TABLE `Laundries_logs` (
   KEY `id_laundry` (`id_laundry`),
   CONSTRAINT `id_laundry` FOREIGN KEY (`id_laundry`) REFERENCES `Laundries` (`id_laundry`),
   CONSTRAINT `id_occupying_user` FOREIGN KEY (`id_occupying_user`) REFERENCES `Users` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `Laundries_logs` (
 
 LOCK TABLES `Laundries_logs` WRITE;
 /*!40000 ALTER TABLE `Laundries_logs` DISABLE KEYS */;
-INSERT INTO `Laundries_logs` VALUES (1,'2020-01-06','14:00:00','16:00:00',4,10),(33,'2020-01-04','16:00:00','18:00:00',5,15),(34,'2020-01-05','12:00:00','14:00:00',4,14),(35,'2020-01-05','14:55:00','16:55:00',6,13),(36,'2020-01-06','14:00:00','16:00:00',4,8),(37,'2020-01-06','13:00:00','15:00:00',6,15),(38,'2020-01-11','16:00:00','18:00:00',NULL,NULL);
+INSERT INTO `Laundries_logs` VALUES (1,'2020-01-06','14:00:00','16:00:00',4,10),(33,'2020-01-04','16:00:00','18:00:00',5,15),(34,'2020-01-05','12:00:00','14:00:00',4,14),(35,'2020-01-05','14:55:00','16:55:00',6,13),(36,'2020-01-06','14:00:00','16:00:00',4,8),(37,'2020-01-06','13:00:00','15:00:00',6,15),(75,'2020-01-06','16:00:00','19:00:00',6,14),(76,'2020-01-06','44:44:44','19:00:00',6,14);
 /*!40000 ALTER TABLE `Laundries_logs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,4 +240,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-11 16:40:31
+-- Dump completed on 2020-01-12 18:05:36
