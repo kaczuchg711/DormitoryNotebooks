@@ -47,8 +47,6 @@
 			$this->conn = null;
 		}
 
-
-
 		public function get_password($email)
 		{
 			$sql = "SELECT password FROM Users where email like '$email'";
@@ -89,6 +87,7 @@
 			{
 				die('error in get_laundry_log');
 			}
+
 
 
 			return $result;

@@ -28,7 +28,7 @@
 			<tbody>
 			<?php
 
-				require_once "Database.php";
+				require_once "Models/Database.php";
 				$db = new Database();
 				$db->connect();
 				$res = $db->get_laundry_log();

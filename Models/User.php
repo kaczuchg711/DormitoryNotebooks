@@ -1,82 +1,63 @@
-<body style="background: #3a3a3a; color: white">
-	<?php
+<?php
+	require_once 'config.php';
 
-		class User
+	class User
+	{
+		private $login;
+		private $email;
+		private $password;
+		private $name;
+		private $surname;
+		private $flat_nr;
+		private $type;
+
+		public function __construct($login, $email, $password, $name, $surname, $flat_nr, $type)
 		{
-			private $password;
-			private $name;
-
-			public function __construct(string $password, string $name)
-			{
-				$this->password = $password;
-				$this->name = $name;
-			}
-
-			public function getPassword()
-			{
-				return $this->password;
-			}
-
-			public static function user_from_sql()
-			{
-				//			require_once 'connect.php';
-
-				$host = 'localhost';
-				$db_user = 'tkacza';
-				$db_password = 'pomidorowa';
-				$db_name = 'testdb';
-
-				try
-				{
-					$conn = new PDO("mysql:host=$host;dbname=$db_name", $db_user, $db_password);
-					// set the PDO error mode to exception
-					$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-					echo "it works";
-					$a = $conn->query('SELECT * from testtb');
-					$b = $a->fetch(PDO::FETCH_ASSOC);
-					echo $b['name'];
-
-					$conn = null;
-				}
-				catch(PDOException $e)
-				{
-					echo "Connection failed: " . $e->getMessage();
-				}
-
-				//			$connection = @new mysqli($host,$db_user,$db_password,$db_name);
-				//			echo "hej";
-				//			if($connection->connect_error != null)
-				//			{
-				//				echo "Error:".$connection->connect_error;
-				//			}
-				//			else
-				//			{
-				//				echo "it works";
-				//				$query = "Select * from testt where name = 'Maciek' and password='pomidor'";
-				//				if ($result = @$connection->query($query))
-				//				{
-				//					if($result->num_rows)
-				//					{
-				//						$result_table = $result->fetch_assoc();
-				//						$name = $result_table['name'];
-				//						$password = $result_table['password'];
-				//						echo $name.$password;
-				//						$result->free();
-				//					}
-				//					else
-				//					{
-				//						echo "bledne haslo lub login";
-				//					}
-				//				}
-				//
-				//				$connection->close();
-				//			}
-
-				return 1;
-			}
+			$this->login = $login;
+			$this->email = $email;
+			$this->password = $password;
+			$this->name = $name;
+			$this->surname = $surname;
+			$this->flat_nr = $flat_nr;
+			$this->type = $type;
 		}
 
-		$u = User::user_from_sql();
+		public function getLogin()
+		{
+			return $this->login;
+		}
 
-	?>
-</body>
+		public function getEmail()
+		{
+			return $this->email;
+		}
+
+		public function getPassword()
+		{
+			return $this->password;
+		}
+
+		public function getName()
+		{
+			return $this->name;
+		}
+
+		public function getSurname()
+		{
+			return $this->surname;
+		}
+
+		public function getFlatNr()
+		{
+			return $this->flat_nr;
+		}
+
+		public function getType()
+		{
+			return $this->type;
+		}
+	}
+
+	$u = User::user_from_sql();
+
+?>
