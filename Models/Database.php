@@ -59,7 +59,7 @@
 			return $result->fetch()[0];
 		}
 
-		public function get_laundry_log()
+		public function get_laundry_log_inv_limit_3()
 		{
 			$sql =
 				'SELECT Laundries_logs.date,
@@ -81,15 +81,23 @@
 					order by Laundries_logs.id_laundries_logs desc
 					Limit 3';
 
-	
 			$result = $this->conn->query($sql);
+
 			if($result->rowCount() == 0)
 			{
 				die('error in get_laundry_log');
 			}
 
+			$size = $result->rowCount();
 
+			//				invert
+			$laundry_log = array_fill(0, $size, null);
 
-			return $result;
+			while($row = $result->fetch(PDO::FETCH_NUM))
+			{
+				$laundry_log[--$size] = $row;
+			}
+
+			return $laundry_log;
 		}
 	}

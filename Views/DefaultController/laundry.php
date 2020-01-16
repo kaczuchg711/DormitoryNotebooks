@@ -27,23 +27,11 @@
 			</thead>
 			<tbody>
 			<?php
-
 				require_once "Models/Database.php";
 				$db = new Database();
 				$db->connect();
-				$res = $db->get_laundry_log();
+				$array= $db->get_laundry_log_inv_limit_3();
 				$db->disconnect();
-
-				$size = $res->rowCount();
-
-				//				invert
-
-				$array = array_fill(0, $size, null);
-
-				while($row = $res->fetch(PDO::FETCH_NUM))
-				{
-					$array[--$size] = $row;
-				}
 
 				echo "<tr>";
 				foreach($array as $line)
