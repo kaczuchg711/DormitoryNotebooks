@@ -58,6 +58,3 @@
 		}
 	}
 
-	$u = User::user_from_sql();
-
-?>

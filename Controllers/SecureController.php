@@ -23,8 +23,9 @@
 				{
 					$db = new Database();
 					$db->connect();
-					$dbupassword = $db->get_password($email);
+					$user = $db->user_from_base($email);
 					$db->disconnect();
+
 					if($dbupassword == false)
 					{
 						return $this->render(["wrong login"], 'login');

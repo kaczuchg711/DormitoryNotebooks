@@ -1,6 +1,7 @@
 <?php
 
 	require_once "config.php";
+	require_once "User.php";
 
 	class Database
 	{
@@ -101,5 +102,46 @@
 			return $laundry_log;
 		}
 
+		public function user_from_base($email)
+		{
+			$query = "SELECT Users.login,
+						   Users.email,
+						   Users.password,
+						   User_details.name,
+						   User_details.surname,
+						   Flats.number,
+						   Roles.Role
+					from Users,
+						 User_details,
+						 Flats,
+						 Roles
+					where (Users.id_user_details = User_details.id_user_details and
+						  Users.id_user_flat = Flats.id_flat  and
+						  Users.id_role = Roles.id_role) and
+						  Users.email = '$email'";
+
+			$data = $this->conn->query($query);
+
+			if($data->rowCount() == 0)
+			{
+				return false;
+			}
+
+			$result = $data->fetchAll(PDO::FETCH_ASSOC);
+
+			$vars = [];
+
+			foreach($result as $x)
+			{
+				foreach($x as $y)
+				{
+					$vars[] = $y;
+				}
+			}
+
+		return new User($vars[0],$vars[1],$vars[2],$vars[3],$vars[4],$vars[5],$vars[6]);
+
+		}
 
 	}
+
