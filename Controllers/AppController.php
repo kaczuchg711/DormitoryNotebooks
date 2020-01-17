@@ -6,7 +6,9 @@
 
 		function __construct()
 		{
+
 			$this->request = strtolower($_SERVER['REQUEST_METHOD']);
+			session_start();
 		}
 
 		function isGet()

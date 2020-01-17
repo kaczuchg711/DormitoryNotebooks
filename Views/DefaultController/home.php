@@ -1,3 +1,10 @@
+<?php
+	if(!isset($_SESSION['id']))
+	{
+		die('You are not logged in!');
+	}
+?>
+
 <!Doctype html>
 <html lang="pl">
 <head title="Akademikowe Zeszyty">
@@ -11,6 +18,10 @@
 	<!--	<meta http-equiv="refresh" content="1">-->
 </head>
 <body>
+
+	<form action="?page=logout" method="post">
+		<button style="align-items: end">wyloguj</button>
+	</form>
 
 	<h2>Witaj<br>Co chcesz zrobić ?</h2>
 

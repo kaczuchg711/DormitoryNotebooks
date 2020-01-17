@@ -16,6 +16,11 @@
 							'controller' => 'SecureController',
 							'action' => 'login'
 						],
+					'logout' =>
+						[
+							'controller' => 'SecureController',
+							'action' => 'logout'
+						],
 					'home' =>
 						[
 							'controller' => 'DefaultController',
