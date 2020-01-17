@@ -20,7 +20,7 @@ body
 {
     font-family: Verdana, serif;
     font-size: 16px;
-    background: linear-gradient(180deg, rgba(8, 82, 166, 1) 0%, rgba(0, 87, 187, 1) 0%, rgba(255, 255, 255, 1));
+    background: linear-gradient(180deg, rgb(7, 39, 78) 0%, rgba(0, 87, 187, 1) 0%, rgb(255, 255, 255));
     background-attachment: fixed;
     align-items: center;
 }
@@ -87,3 +87,7 @@ div.small_container
     margin-right: auto;
 }
 
+#logout
+{
+    float: right;
+}

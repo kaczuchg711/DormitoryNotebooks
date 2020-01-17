@@ -2,6 +2,7 @@
 
 	require_once 'Controllers/DefaultController.php';
 	require_once 'Controllers/SecureController.php';
+	require_once 'Controllers/LaundryController.php';
 
 	class Routing
 	{
@@ -28,8 +29,13 @@
 						],
 					'laundry' =>
 						[
-							'controller' => 'DefaultController',
+							'controller' => 'LaundryController',
 							'action' => 'laundry'
+						],
+					'book_laundry' =>
+						[
+							'controller' => 'LaundryController',
+							'action' => 'book_laundry'
 						],
 				];
 		}

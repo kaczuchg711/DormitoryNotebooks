@@ -22,9 +22,7 @@
 				try
 				{
 					$db = new Database();
-					$db->connect();
 					$user = $db->user_from_base($email);
-					$db->disconnect();
 
 					if($user == false)
 					{
@@ -34,9 +32,7 @@
 					if($user->getPassword() == $password)
 					{
 						$url = "http://$_SERVER[HTTP_HOST]/";
-
-						$_SESSION['id'] = 1;
-
+						$_SESSION['user'] = $user;
 
 						header("Location: {$url}/DormitoryNotebooks?page=home");
 					}

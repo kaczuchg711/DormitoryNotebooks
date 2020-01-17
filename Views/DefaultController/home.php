@@ -1,7 +1,8 @@
 <?php
-	if(!isset($_SESSION['id']))
+	if(!isset($_SESSION['user']))
 	{
-		die('You are not logged in!');
+		$url = "http://$_SERVER[HTTP_HOST]/";
+		header("Location: {$url}/DormitoryNotebooks?page=login");
 	}
 ?>
 
@@ -20,7 +21,7 @@
 <body>
 
 	<form action="?page=logout" method="post">
-		<button style="align-items: end">wyloguj</button>
+		<button id = "logout">wyloguj</button>
 	</form>
 
 	<h2>Witaj<br>Co chcesz zrobić ?</h2>

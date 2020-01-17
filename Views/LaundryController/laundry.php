@@ -1,3 +1,11 @@
+<?php
+	if(!isset($_SESSION['user']))
+	{
+		$url = "http://$_SERVER[HTTP_HOST]/";
+		header("Location: {$url}/DormitoryNotebooks?page=login");
+	}
+
+?>
 <!Doctype html>
 <html lang="pl">
 <head title="Akademikowe Zeszyty">
@@ -27,11 +35,7 @@
 			</thead>
 			<tbody>
 			<?php
-				require_once "Models/Database.php";
-				$db = new Database();
-				$db->connect();
-				$array= $db->get_laundry_log_inv_limit_3();
-				$db->disconnect();
+				$array = $variables[0];
 
 				echo "<tr>";
 				foreach($array as $line)
@@ -52,11 +56,18 @@
 	<div class="small_container">
 		<p>wybierz pralnię</p>
 
-		<form action="?page=laundry" method="post">
+		<form action="?page=book_laundry" method="post">
 			<select>
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
+				<?php
+					$array = $variables[1];
+
+					foreach($array as $cel)
+					{
+						echo "<option>" . $cel . "</option>";
+						echo $cel;
+					}
+
+				?>
 			</select>
 			<button class="btn btn-primary">zarezerwuj</button>
 		</form>
@@ -68,8 +79,7 @@
 	<script>
         var myVar = setInterval(myTimer, 1000);
 
-        function myTimer()
-		{
+        function myTimer() {
             var d = new Date();
             document.getElementById("t").innerHTML = "aktualny czas: <br>" + d.toLocaleTimeString();
         }

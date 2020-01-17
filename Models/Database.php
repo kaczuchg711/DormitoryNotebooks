@@ -82,7 +82,9 @@
 					order by Laundries_logs.id_laundries_logs desc
 					Limit 3';
 
+			$this->connect();
 			$result = $this->conn->query($sql);
+			$this->disconnect();
 
 			if($result->rowCount() == 0)
 			{
@@ -120,7 +122,10 @@
 						  Users.id_role = Roles.id_role) and
 						  Users.email = '$email'";
 
+
+			$this->connect();
 			$data = $this->conn->query($query);
+			$this->disconnect();
 
 			if($data->rowCount() == 0)
 			{
@@ -139,9 +144,43 @@
 				}
 			}
 
-		return new User($vars[0],$vars[1],$vars[2],$vars[3],$vars[4],$vars[5],$vars[6]);
+			return new User($vars[0], $vars[1], $vars[2], $vars[3], $vars[4], $vars[5], $vars[6]);
 
 		}
 
-	}
+		public function get_list_of_free_laundry()
+		{
+			$query = "Select number
+						from Laundries,Laundries_logs
+						where CURDATE() = Laundries_logs.date and
+						Laundries.id_laundry != Laundries_logs.id_laundry and (CURRENT_TIME() - Laundries_logs.end_time_occupancy < 0);";
 
+			$this->connect();
+			$data = $this->conn->query($query);
+			$this->disconnect();
+
+			if($data->rowCount() == 0)
+			{
+				return false;
+			}
+
+			$result = $data->fetchAll(PDO::FETCH_ASSOC);
+
+			$vars = [];
+
+			foreach($result as $x)
+			{
+				foreach($x as $y)
+				{
+					$vars[] = $y;
+				}
+			}
+
+			return $vars;
+		}
+
+		public function set_laundry_log()
+		{
+
+		}
+	}
