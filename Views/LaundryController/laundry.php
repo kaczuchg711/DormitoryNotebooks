@@ -58,6 +58,10 @@
 			?>
 			</tbody>
 		</table>
+		<?php
+			if(isset($variables[3]))
+			echo "<p>$variables[3]</p>"
+		?>
 	</div>
 
 	<div class="small_container">

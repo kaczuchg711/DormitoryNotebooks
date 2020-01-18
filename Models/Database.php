@@ -243,9 +243,43 @@
 
 			$result = $data->fetchAll(PDO::FETCH_ASSOC);
 
+
 			$this->conn->query($query2);
 
 			$this->disconnect();
 
 		}
+
+		public function get_last_occupy_users()
+		{
+			$query = 'SELECT distinct Laundries_logs.id_occupying_user from Laundries_logs where start_time_occupancy  - CURRENT_TIME > -500';
+
+			$this->connect();
+
+			$data = $this->conn->query($query);
+
+			$this->disconnect();
+			$result = $data->fetchAll(PDO::FETCH_ASSOC);
+
+			$id_users = [];
+
+			foreach($result as $x)
+			{
+				foreach($x as $y)
+				{
+					$id_users[] = $y;
+
+				}
+			}
+
+			return $id_users;
+
+		}
 	}
+//	$x = new Database();
+//	$y = $x->get_last_occupy_users();
+//
+//	foreach($y as $z)
+//	{
+//		echo $z;
+//	}
