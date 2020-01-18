@@ -44,6 +44,10 @@
 					{
 						foreach($line as $cel)
 						{
+							if($cel == '25:00:00')
+							{
+								$cel = '-';
+							}
 							echo "<td>" . $cel . "</td>";
 						}
 						echo "</tr>";
@@ -58,33 +62,30 @@
 
 	<div class="small_container">
 
+		<?php
+			if($variables[2])
+			{
+				echo '<form  action="?page=cancel_laundry" method="post">';
+				echo '<button class="btn btn-primary">anuluj</button>';
+				echo '</form>';
+			}
+			else
+			{
+				echo '<p>wybierz pralnię</p>';
+				echo '<form action="?page=book_laundry" method="post">';
+				echo '<button class="btn btn-primary">rezerwuj</button>';
+				echo '<select name="laundry_nr">';
 
+				$array = $variables[1];
 
-
-			<?php
-				if($variables[2])
+				foreach($array as $cel)
 				{
-					echo '<form  action="?page=cancel_laundry" method="post">';
-					echo '<button class="btn btn-primary">anuluj</button>';
-					echo '</form>';
+					echo "<option>" . $cel . "</option>";
+					echo $cel;
 				}
-				else
-				{
-					echo '<p>wybierz pralnię</p>';
-					echo '<form action="?page=book_laundry" method="post">';
-						echo '<button class="btn btn-primary">rezerwuj</button>';
-					echo '<select name="laundry_nr">';
-
-					$array = $variables[1];
-
-					foreach($array as $cel)
-					{
-						echo "<option>" . $cel . "</option>";
-						echo $cel;
-					}
-					echo '</select>';
-				}
-				?>
+				echo '</select>';
+			}
+		?>
 
 		<br/>
 

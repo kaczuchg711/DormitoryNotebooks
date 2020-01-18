@@ -56,7 +56,8 @@
 			$db = new Database();
 
 			$db->update_laundry();
-
+//			xd serwis za szybki
+			sleep(1);
 			$url = "http://$_SERVER[HTTP_HOST]/";
 			header("Location: {$url}/DormitoryNotebooks?page=laundry");
 		}

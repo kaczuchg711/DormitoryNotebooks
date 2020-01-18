@@ -189,7 +189,7 @@
 			$id = $_SESSION['user']->getId();
 
 			$query = "INSERT INTO Laundries_logs (date, start_time_occupancy, end_time_occupancy, id_laundry, id_occupying_user)
-					VALUES (CURDATE(), CURRENT_TIME(), CURRENT_TIME()+TIME('02:00:00'), 
+					VALUES (CURDATE(), CURRENT_TIME(), TIME('25:00:00'), 
 					(select Laundries.id_laundry from Laundries where number = '$laundry_nr'),'$id')";
 
 			$data = $this->conn->query($query);
@@ -231,7 +231,7 @@
 			$query1 = "call last_book_laundry('$id',@a)";
 			$query25 = "select @a";
 			$query2 = 	"UPDATE Dorm.Laundries_logs t
-						SET t.end_time_occupancy = CURRENT_TIME
+						SET t.end_time_occupancy = (CURRENT_TIME -1)
 						WHERE t.id_occupying_user = '$id'
 						and id_laundries_logs = @a;";
 
