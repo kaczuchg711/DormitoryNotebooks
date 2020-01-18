@@ -12,11 +12,26 @@
 		public function laundry()
 		{
 			$db = new Database();
+
 			$array = $db->get_laundry_log_inv_limit_3();
+
+			$occupying_users = $db->get_now_occupying_users();
+
+			$id = $_SESSION['user']->getId();
+
+
+			if(in_array($id, $occupying_users))
+			{
+				$occupys_laundry = true;
+			}
+			else
+			{
+				$occupys_laundry = false;
+			}
 
 			$laundrys = $this->free_laundry();
 
-			return $this->render([$array, $laundrys], 'laundry');
+			return $this->render([$array, $laundrys, $occupys_laundry], 'laundry');
 		}
 
 		public function free_laundry()
@@ -29,10 +44,19 @@
 		public function book_laundry()
 		{
 			$db = new Database();
-			$array = $db->set_laundry_log();
 
-			$sql = "INSERT INTO Laundries_logs (date, start_time_occupancy, end_time_occupancy, id_laundry, id_occupying_user)
-					VALUES (CURDATE(), CURRENT_TIME(), CURRENT_TIME()+TIME('02:00:00'), 6, 14)";
+			$array = $db->set_laundry_log($_POST['laundry_nr']);
+
+			$url = "http://$_SERVER[HTTP_HOST]/";
+			header("Location: {$url}/DormitoryNotebooks?page=laundry");
+		}
+
+		public function cancel_laundry()
+		{
+			$db = new Database();
+
+
+
 		}
 
 	}

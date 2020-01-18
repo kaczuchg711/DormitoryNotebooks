@@ -37,6 +37,11 @@
 							'controller' => 'LaundryController',
 							'action' => 'book_laundry'
 						],
+					'cancel_laundry' =>
+						[
+							'controller' => 'LaundryController',
+							'action' => 'cancel_laundry'
+						],
 				];
 		}
 

@@ -35,18 +35,21 @@
 			</thead>
 			<tbody>
 			<?php
-				$array = $variables[0];
-
-				echo "<tr>";
-				foreach($array as $line)
+				if(isset($variables[0]))
 				{
-					foreach($line as $cel)
+					$array = $variables[0];
+
+					echo "<tr>";
+					foreach($array as $line)
 					{
-						echo "<td>" . $cel . "</td>";
+						foreach($line as $cel)
+						{
+							echo "<td>" . $cel . "</td>";
+						}
+						echo "</tr>";
 					}
 					echo "</tr>";
 				}
-				echo "</tr>";
 
 			?>
 			</tbody>
@@ -54,11 +57,24 @@
 	</div>
 
 	<div class="small_container">
-		<p>wybierz pralnię</p>
 
-		<form action="?page=book_laundry" method="post">
-			<select>
-				<?php
+
+
+
+			<?php
+				if($variables[2])
+				{
+					echo '<form  action="?page=cancel_laundry" method="post">';
+					echo '<button class="btn btn-primary">anuluj</button>';
+					echo '</form>';
+				}
+				else
+				{
+					echo '<p>wybierz pralnię</p>';
+					echo '<form action="?page=book_laundry" method="post">';
+						echo '<button class="btn btn-primary">rezerwuj</button>';
+					echo '<select name="laundry_nr">';
+
 					$array = $variables[1];
 
 					foreach($array as $cel)
@@ -66,11 +82,10 @@
 						echo "<option>" . $cel . "</option>";
 						echo $cel;
 					}
-
+					echo '</select>';
+				}
 				?>
-			</select>
-			<button class="btn btn-primary">zarezerwuj</button>
-		</form>
+
 		<br/>
 
 		<p id="t"></p>

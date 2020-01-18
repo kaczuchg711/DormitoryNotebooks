@@ -3,6 +3,7 @@
 
 	class User
 	{
+		private $id;
 		private $login;
 		private $email;
 		private $password;
@@ -11,8 +12,9 @@
 		private $flat_nr;
 		private $type;
 
-		public function __construct($login, $email, $password, $name, $surname, $flat_nr, $type)
+		public function __construct($id, $login, $email, $password, $name, $surname, $flat_nr, $type)
 		{
+			$this->id = $id;
 			$this->login = $login;
 			$this->email = $email;
 			$this->password = $password;
@@ -56,5 +58,27 @@
 		{
 			return $this->type;
 		}
+
+
+		public function getId()
+		{
+			return $this->id;
+		}
+
+
+
+		public function __toString()
+		{
+			return
+				$this->id.
+				$this->login .
+				$this->email .
+				$this->password .
+				$this->name .
+				$this->surname .
+				$this->flat_nr .
+				$this->type;
+		}
+
 	}
 

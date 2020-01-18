@@ -88,7 +88,7 @@
 
 			if($result->rowCount() == 0)
 			{
-				die('error in get_laundry_log');
+				return ;
 			}
 
 			$size = $result->rowCount();
@@ -104,9 +104,10 @@
 			return $laundry_log;
 		}
 
-		public function user_from_base($email)
+		public function get_user_from_base($email)
 		{
-			$query = "SELECT Users.login,
+			$query = "SELECT Users.id_user,
+							Users.login,
 						   Users.email,
 						   Users.password,
 						   User_details.name,
@@ -121,7 +122,6 @@
 						  Users.id_user_flat = Flats.id_flat  and
 						  Users.id_role = Roles.id_role) and
 						  Users.email = '$email'";
-
 
 			$this->connect();
 			$data = $this->conn->query($query);
@@ -141,19 +141,23 @@
 				foreach($x as $y)
 				{
 					$vars[] = $y;
+
 				}
 			}
 
-			return new User($vars[0], $vars[1], $vars[2], $vars[3], $vars[4], $vars[5], $vars[6]);
+			return new User($vars[0], $vars[1], $vars[2], $vars[3], $vars[4], $vars[5], $vars[6],$vars[7]);
 
 		}
 
 		public function get_list_of_free_laundry()
 		{
-			$query = "Select number
-						from Laundries,Laundries_logs
-						where CURDATE() = Laundries_logs.date and
-						Laundries.id_laundry != Laundries_logs.id_laundry and (CURRENT_TIME() - Laundries_logs.end_time_occupancy < 0);";
+			$query = "Select number from Laundries where number not in (
+						Select number
+						from Laundries,
+							 Laundries_logs
+						where CURDATE() = Laundries_logs.date
+						  and Laundries.id_laundry = Laundries_logs.id_laundry
+						  and (CURRENT_TIME() - Laundries_logs.end_time_occupancy < 0));";
 
 			$this->connect();
 			$data = $this->conn->query($query);
@@ -179,8 +183,47 @@
 			return $vars;
 		}
 
-		public function set_laundry_log()
+		public function set_laundry_log($laundry_nr)
 		{
+			$this->connect();
+			$id = $_SESSION['user']->getId();
 
+			$query = "INSERT INTO Laundries_logs (date, start_time_occupancy, end_time_occupancy, id_laundry, id_occupying_user)
+					VALUES (CURDATE(), CURRENT_TIME(), CURRENT_TIME()+TIME('02:00:00'), 
+					(select Laundries.id_laundry from Laundries where number = '$laundry_nr'),'$id')";
+//
+//			INSERT INTO Laundries_logs (date, start_time_occupancy, end_time_occupancy, id_laundry, id_occupying_user)
+//					VALUES (CURDATE(), CURRENT_TIME(), CURRENT_TIME()+TIME('02:00:00'),
+//						(select Laundries.id_laundry from Laundries where number = 2),13);
+
+			$data = $this->conn->query($query);
+			$this->disconnect();
+		}
+
+		public function get_now_occupying_users()
+		{
+			$this->connect();
+			$query = "	select id_user
+						from Users,
+						Laundries_logs
+						where Users.id_user = Laundries_logs.id_occupying_user
+						and CURRENT_TIME() between Laundries_logs.start_time_occupancy and Laundries_logs.end_time_occupancy;";
+
+			$data = $this->conn->query($query);
+			$this->disconnect();
+
+			$result = $data->fetchAll(PDO::FETCH_ASSOC);
+
+			$vars = [];
+
+			foreach($result as $x)
+			{
+				foreach($x as $y)
+				{
+					$vars[] = $y;
+				}
+			}
+
+			return $vars;
 		}
 	}

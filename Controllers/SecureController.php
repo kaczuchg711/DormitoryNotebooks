@@ -22,7 +22,7 @@
 				try
 				{
 					$db = new Database();
-					$user = $db->user_from_base($email);
+					$user = $db->get_user_from_base($email);
 
 					if($user == false)
 					{
