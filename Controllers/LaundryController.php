@@ -55,8 +55,10 @@
 		{
 			$db = new Database();
 
+			$db->update_laundry();
 
-
+			$url = "http://$_SERVER[HTTP_HOST]/";
+			header("Location: {$url}/DormitoryNotebooks?page=laundry");
 		}
 
 	}

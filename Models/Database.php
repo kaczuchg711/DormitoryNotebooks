@@ -191,10 +191,6 @@
 			$query = "INSERT INTO Laundries_logs (date, start_time_occupancy, end_time_occupancy, id_laundry, id_occupying_user)
 					VALUES (CURDATE(), CURRENT_TIME(), CURRENT_TIME()+TIME('02:00:00'), 
 					(select Laundries.id_laundry from Laundries where number = '$laundry_nr'),'$id')";
-//
-//			INSERT INTO Laundries_logs (date, start_time_occupancy, end_time_occupancy, id_laundry, id_occupying_user)
-//					VALUES (CURDATE(), CURRENT_TIME(), CURRENT_TIME()+TIME('02:00:00'),
-//						(select Laundries.id_laundry from Laundries where number = 2),13);
 
 			$data = $this->conn->query($query);
 			$this->disconnect();
@@ -225,5 +221,31 @@
 			}
 
 			return $vars;
+		}
+
+		public function update_laundry()
+		{
+			$id = $_SESSION['user']->getId();
+
+
+			$query1 = "call last_book_laundry('$id',@a)";
+			$query25 = "select @a";
+			$query2 = 	"UPDATE Dorm.Laundries_logs t
+						SET t.end_time_occupancy = CURRENT_TIME
+						WHERE t.id_occupying_user = '$id'
+						and id_laundries_logs = @a;";
+
+			$this->connect();
+
+			$this->conn->query($query1);
+
+			$data = $this->conn->query($query25);
+
+			$result = $data->fetchAll(PDO::FETCH_ASSOC);
+
+			$this->conn->query($query2);
+
+			$this->disconnect();
+
 		}
 	}
