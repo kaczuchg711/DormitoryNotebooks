@@ -252,7 +252,7 @@
 
 		public function get_last_occupy_users()
 		{
-			$query = 'SELECT distinct Laundries_logs.id_occupying_user from Laundries_logs where start_time_occupancy  - CURRENT_TIME > -500';
+			$query = 'SELECT distinct Laundries_logs.id_occupying_user from Laundries_logs where start_time_occupancy  - CURRENT_TIME > -500 and Laundries_logs.date = current_date()';
 
 			$this->connect();
 

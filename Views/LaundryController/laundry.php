@@ -14,9 +14,8 @@
 	<link rel="Stylesheet" type="text/css" href="Public/css/bootstrap-4.3.1-dist/css/bootstrap-reboot.css"/>
 	<link rel="Stylesheet" type="text/css" href="Public/css/style.css"/>
 	<meta charset="UTF-8">
-	<!--		<meta http-equiv="refresh" content="1">-->
 	<title>Pralnia</title>
-	<!--	<meta http-equiv="refresh" content="1">-->
+	<script>src = "Public/js/laundry.js" </script>
 </head>
 <body>
 	<h2>Pralnia</h2>
