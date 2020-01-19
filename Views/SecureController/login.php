@@ -8,6 +8,7 @@
 	<meta charset="UTF-8">
 	<!--		<meta http-equiv="refresh" content="1">-->
 	<title>Akademikowe Zeszyty</title>
+	<script src="Public/js/login.js"></script>
 </head>
 <body>
 	<h2>Akademikowe zeszyty</h2>
@@ -30,7 +31,7 @@
 				</select>
 
 				<p>e-mail</p>
-				<input name="email" type="text" placeholder="email@email.com">
+				<input id="email" name="email" type="text" placeholder="email@email.com" onfocusout="check_login()">
 
 				<p>hasło</p>
 				<input name="password" placeholder="password" type="password">

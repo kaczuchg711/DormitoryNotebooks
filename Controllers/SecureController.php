@@ -58,4 +58,10 @@
 			$url = "http://$_SERVER[HTTP_HOST]/";
 			header("Location: {$url}/DormitoryNotebooks?page=login");
 		}
+
+		public function check_login()
+		{
+
+		}
+
 	}

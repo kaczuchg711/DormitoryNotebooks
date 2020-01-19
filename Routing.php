@@ -22,6 +22,11 @@
 							'controller' => 'SecureController',
 							'action' => 'logout'
 						],
+					'check_login' =>
+						[
+							'controller' => 'SecureController',
+							'action' => 'check_login'
+						],
 					'home' =>
 						[
 							'controller' => 'DefaultController',
@@ -42,6 +47,7 @@
 							'controller' => 'LaundryController',
 							'action' => 'cancel_laundry'
 						],
+
 				];
 		}
 
