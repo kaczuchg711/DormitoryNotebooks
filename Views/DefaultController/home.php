@@ -19,9 +19,10 @@
 </head>
 <body>
 
-	<form action="?page=logout" method="post">
-		<button id="logout">wyloguj</button>
-	</form>
+	<?php
+		require_once 'Views/Common/bar.php'
+	?>
+
 
 	<h2>Witaj<br>Co chcesz zrobić ?</h2>
 
@@ -34,12 +35,5 @@
 		<button class="home_button">Wypożyczyć odkurzacz</button>
 		<button class="home_button">Wypożyczyć suszarkę</button>
 	</div>
-
-	<script>
-        window.location.href
-
-
-	</script>
-
 </body>
 </html>

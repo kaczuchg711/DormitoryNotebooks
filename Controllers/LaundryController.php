@@ -44,20 +44,15 @@
 
 		public function book_laundry()
 		{
-			$db = new Database();
 
-			//			jeżeli użytkowanik dawał rezerwację 5 minut temu to mu nie zezwolić
-			//			id użytkowników którzy rezerwowali 5 minut temu
+			$db = new Database();
 
 			$ban_users = $db->get_last_occupy_users();
 
 			$id = $_SESSION['user']->getId();
 
-
-
 			if(in_array($id, $ban_users))
 			{
-//				php odswierz i komunikat
 				$array =  $db->get_laundry_log_inv_limit_3();
 				$laundrys = $this->free_laundry();
 				$occupys_laundry = false;

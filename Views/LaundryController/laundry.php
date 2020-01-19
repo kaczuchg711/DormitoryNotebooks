@@ -18,6 +18,9 @@
 	<script>src = "Public/js/laundry.js" </script>
 </head>
 <body>
+	<?php
+		require_once 'Views/Common/bar.php'
+	?>
 	<h2>Pralnia</h2>
 	<div class="table_container">
 		<table class="table-striped">
@@ -89,6 +92,7 @@
 				echo '</select>';
 			}
 		?>
+
 
 		<br/>
 

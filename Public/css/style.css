@@ -89,5 +89,21 @@ div.small_container
 
 #logout
 {
-    float: right;
+    align-self: right;
+
+}
+
+#d2
+{
+    width:100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#second_bar_button
+{
+    position: relative;
+    margin-right: 10%;
+    margin-left: 85%;
+
 }

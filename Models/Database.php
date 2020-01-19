@@ -188,9 +188,9 @@
 			$this->connect();
 			$id = $_SESSION['user']->getId();
 
-			$query = "INSERT INTO Laundries_logs (date, start_time_occupancy, end_time_occupancy, id_laundry, id_occupying_user)
+			$query = "START TRANSACTION; INSERT INTO Laundries_logs (date, start_time_occupancy, end_time_occupancy, id_laundry, id_occupying_user)
 					VALUES (CURDATE(), CURRENT_TIME(), TIME('25:00:00'), 
-					(select Laundries.id_laundry from Laundries where number = '$laundry_nr'),'$id')";
+					(select Laundries.id_laundry from Laundries where number = '$laundry_nr'),'$id'); COMMIT;";
 
 			$data = $this->conn->query($query);
 			$this->disconnect();
