@@ -6,10 +6,10 @@
 	<link rel="Stylesheet" type="text/css" href="Public/css/bootstrap-4.3.1-dist/css/bootstrap-reboot.css"/>
 	<link rel="Stylesheet" type="text/css" href="Public/css/main.css"/>
 	<meta charset="UTF-8">
-	<!--		<meta http-equiv="refresh" content="1">-->
 	<title>Akademikowe Zeszyty</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="Public/js/login.js"></script>
+
 </head>
 <body>
 	<h2>Akademikowe zeszyty</h2>
@@ -39,8 +39,6 @@
 
 				<p id="haslo">hasło</p>
 				<input name="password" placeholder="password" type="password">
-
-
 
 				<button type="submit" class="btn btn-primary">Zaloguj</button>
 

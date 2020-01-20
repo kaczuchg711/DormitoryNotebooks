@@ -19,7 +19,7 @@ ELEMENTY APLIKACJI
     Proces logowania, -----------------
     utrzymanie sesji (w oparciu o cookies i bazę danych), -----
     uprawnienia użytkowników  (weryfikowane  przez  system  w  trakcie  działania/testowania),
-    zarządzanie użytkownikami, ----
+zarządzanie użytkownikami,
     wylogowanie -----
     + wybrana funkcjonalność w ramach założeń do projektu -------
 

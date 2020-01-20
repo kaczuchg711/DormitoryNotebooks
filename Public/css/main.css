@@ -1,12 +1,12 @@
-body > *
-{
-    border-style: solid;
-}
+/*body > **/
+/*{*/
+/*    border-style: solid;*/
+/*}*/
 
-div.container > *
-{
-    border-style: double;
-}
+/*div.container > **/
+/*{*/
+/*    border-style: double;*/
+/*}*/
 
 
 html
@@ -89,17 +89,6 @@ form.login > p
     padding: 1em 0em 0em 0em;
 }
 
-/*form.login*/
-/*{*/
-/*    padding-top: 2em;*/
-/*    margin-left: 1em ;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*}*/
-/*button.btn-primary*/
-/*{*/
-/*    margin-top: 2em;*/
-/*}*/
 div.registration_blue_bar
 {
     display: grid;
@@ -144,11 +133,11 @@ div.registration_blue_bar p
 
 
 
-@media screen and (max-width: 900px)
+@media screen and (max-width: 1000px)
 {
     body
     {
-
+        font-size: 0.8em;
     }
 
     div.container
@@ -159,7 +148,7 @@ div.registration_blue_bar p
 
     div.logo
     {
-
+        display: none;
     }
 
     div.login
