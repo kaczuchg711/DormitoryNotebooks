@@ -15,6 +15,7 @@ function check_login() {
 
             if (res === '"1"')
             {
+                out.innerHTML = "";
             }
             else
             {
