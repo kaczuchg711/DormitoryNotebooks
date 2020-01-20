@@ -46,7 +46,6 @@
 					foreach($array as $line)
 					{
 
-
 						foreach($line as $cel)
 						{
 							if($cel == '25:00:00')
@@ -59,9 +58,18 @@
 					}
 
 				}
+				echo '</tbody> </table>';
+
+				if(isset($variables[3]))
+				{
+					echo $variables[3];
+				}
+
 			?>
 			</tbody>
+
 		</table>
+
 	</div>
 
 	<div class="small_container">

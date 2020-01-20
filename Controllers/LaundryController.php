@@ -13,12 +13,16 @@
 		{
 			$db = new Database();
 
+			$type = $_SESSION['user']->getType();
 
-
-
-			$array = $db->get_laundry_log_inv_limit_3();
-
-			$array = $db->get_laundry_log_inv_limit();
+			if($type == "admin")
+			{
+				$array = $db->get_laundry_log_inv_limit(50);
+			}
+			else
+			{
+				$array = $db->get_laundry_log_inv_limit(3);
+			}
 
 			$occupying_users = $db->get_now_occupying_users();
 
@@ -59,7 +63,6 @@
 
 		public function book_laundry()
 		{
-
 			$db = new Database();
 
 			$ban_users = $db->get_last_occupy_users();
@@ -68,7 +71,7 @@
 
 			if(in_array($id, $ban_users))
 			{
-				$array =  $db->get_laundry_log_inv_limit_3();
+				$array = $db->get_laundry_log_inv_limit(3);
 				$laundrys = $this->free_laundry();
 				$occupys_laundry = false;
 
