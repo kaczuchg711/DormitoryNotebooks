@@ -1,7 +1,7 @@
 function check_login() {
 
     var email = document.getElementById("email").value;
-    const o = document.getElementById("tu");
+    const out = document.getElementById("ajax_result");
     const apiUrl = "http://localhost/DormitoryNotebooks";
     $.ajax(
         {
@@ -9,7 +9,8 @@ function check_login() {
         dataType: 'json'
         })
         .done((res) => {
-            o.append(res.valueOf());
-    });
-
+            out.innerHTML = res.valueOf();
+    })
+        .error(
+alert("error"))
 }

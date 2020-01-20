@@ -12,7 +12,6 @@
 	<script src="Public/js/login.js"></script>
 </head>
 <body>
-	<div id="tu">aaa</div>
 	<h2>Akademikowe zeszyty</h2>
 	<div class="container">
 		<div class="logo">
@@ -38,13 +37,8 @@
 				<p>hasło</p>
 				<input name="password" placeholder="password" type="password">
 
-				<div>
-					<?php
-						if(!empty($variables))
-						{
-							echo $variables[0];
-						}
-					?>
+				<div id="ajax_result">
+
 				</div>
 
 				<button type="submit" class="btn btn-primary">Zaloguj</button>
