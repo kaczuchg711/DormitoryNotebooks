@@ -50,7 +50,13 @@
 
 		public function get_laundry_log_inv_limit($lim)
 		{
-			$sql = "select * from Laundries_logs_view  Limit $lim";
+			$sql = "select     date,
+							   name,
+							   surname,
+							   number,
+							   start_time_occupancy,
+							   end_time_occupancy,
+							   lnumber from Laundries_logs_view order by Laundries_logs_view.id_laundries_logs desc Limit $lim";
 
 			$this->connect();
 			$result = $this->conn->query($sql);
