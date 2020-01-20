@@ -3,6 +3,7 @@
 	require_once 'Controllers/DefaultController.php';
 	require_once 'Controllers/SecureController.php';
 	require_once 'Controllers/LaundryController.php';
+	require_once 'Controllers/AdminController.php';
 
 	class Routing
 	{
@@ -47,6 +48,11 @@
 							'controller' => 'LaundryController',
 							'action' => 'cancel_laundry'
 						],
+					'show_users' =>
+					[
+						'controller' => 'AdminController',
+						'action' => 'show_users'
+					]
 				];
 		}
 

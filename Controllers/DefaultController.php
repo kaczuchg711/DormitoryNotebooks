@@ -11,7 +11,19 @@
 
 		public function home()
 		{
-			return $this->render([], 'home');
+
+			$type = $_SESSION['user']->getType();
+
+			if($type == "admin")
+			{
+				$is_admin = true;
+			}
+			else
+			{
+				$is_admin = false;
+			}
+
+			return $this->render([$is_admin], 'home');
 		}
 
 		public function laundry()

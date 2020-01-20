@@ -74,6 +74,36 @@
 			return $laundry_log;
 		}
 
+		public function get_all_users()
+		{
+			$query = "select id_user,
+       login,
+       email,
+       name,
+       surname,
+       number,
+       Role from FullUserInfo";
+
+			$this->connect();
+			$data = $this->conn->query($query);
+			$this->disconnect();
+
+			$result = $data->fetchAll(PDO::FETCH_ASSOC);
+
+			$users = [];
+
+			foreach($result as $x)
+			{
+				foreach($x as $y)
+				{
+					$users[] = $y;
+				}
+			}
+
+			return $users;
+
+		}
+
 		public function get_user_from_base($email)
 		{
 			$query = "select * from FullUserInfo where email = '$email'";
@@ -96,7 +126,6 @@
 				foreach($x as $y)
 				{
 					$vars[] = $y;
-
 				}
 			}
 
