@@ -1,15 +1,15 @@
-function check_login()
-{
+function check_login() {
+
     var email = document.getElementById("email").value;
-    alert(email);
-    // const apiUrl = "http://localhost:8002";
-    // $.ajax(
-    //     {
-    //     url: apiUrl + '/?page=check_login',
-    //     dataType: 'json'
-    //     })
-    //     .done((res) => {
-    //
-    // });
+    const o = document.getElementById("tu");
+    const apiUrl = "http://localhost/DormitoryNotebooks";
+    $.ajax(
+        {
+        url: apiUrl + '/?page=check_login',
+        dataType: 'json'
+        })
+        .done((res) => {
+            o.append(res.valueOf());
+    });
 
 }

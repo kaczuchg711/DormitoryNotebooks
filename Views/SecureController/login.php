@@ -8,9 +8,11 @@
 	<meta charset="UTF-8">
 	<!--		<meta http-equiv="refresh" content="1">-->
 	<title>Akademikowe Zeszyty</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="Public/js/login.js"></script>
 </head>
 <body>
+	<div id="tu">aaa</div>
 	<h2>Akademikowe zeszyty</h2>
 	<div class="container">
 		<div class="logo">

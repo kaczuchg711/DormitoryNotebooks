@@ -61,7 +61,7 @@
 
 		public function check_login()
 		{
-
+			echo json_encode("tak");
 		}
 
 	}
