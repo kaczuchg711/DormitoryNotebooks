@@ -36,6 +36,7 @@
 			</tr>
 			</thead>
 			<tbody>
+
 			<?php
 				if(isset($variables[0]))
 				{
@@ -44,6 +45,8 @@
 					echo "<tr>";
 					foreach($array as $line)
 					{
+
+
 						foreach($line as $cel)
 						{
 							if($cel == '25:00:00')
@@ -54,16 +57,11 @@
 						}
 						echo "</tr>";
 					}
-					echo "</tr>";
-				}
 
+				}
 			?>
 			</tbody>
 		</table>
-		<?php
-			if(isset($variables[3]))
-			echo "<p>$variables[3]</p>"
-		?>
 	</div>
 
 	<div class="small_container">
@@ -92,7 +90,6 @@
 				echo '</select>';
 			}
 		?>
-
 
 		<br/>
 

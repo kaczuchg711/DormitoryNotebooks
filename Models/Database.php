@@ -104,6 +104,49 @@
 			return $laundry_log;
 		}
 
+		public function get_laundry_log_inv_limit()
+		{
+			$sql =
+				'SELECT Laundries_logs.date,
+						   User_details.name,
+						   User_details.surname,
+						   Flats.number,
+						   Laundries_logs.start_time_occupancy,
+						   Laundries_logs.end_time_occupancy,
+						   Laundries.number
+					from Laundries_logs,
+							 User_details,
+							 Flats,
+							 Laundries,
+							 Users
+					where Laundries_logs.id_laundry = Laundries.id_laundry
+					  and Laundries_logs.id_occupying_user = Users.id_user
+					  and Users.id_user_details = User_details.id_user_details
+					  and Users.id_user_flat = Flats.id_flat
+					order by Laundries_logs.id_laundries_logs desc;';
+
+			$this->connect();
+			$result = $this->conn->query($sql);
+			$this->disconnect();
+
+			if($result->rowCount() == 0)
+			{
+				return;
+			}
+
+			$size = $result->rowCount();
+
+			//				invert
+			$laundry_log = array_fill(0, $size, null);
+
+			while($row = $result->fetch(PDO::FETCH_NUM))
+			{
+				$laundry_log[--$size] = $row;
+			}
+
+			return $laundry_log;
+		}
+
 		public function get_user_from_base($email)
 		{
 			$query = "SELECT Users.id_user,

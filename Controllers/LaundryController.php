@@ -13,7 +13,12 @@
 		{
 			$db = new Database();
 
+
+
+
 			$array = $db->get_laundry_log_inv_limit_3();
+
+			$array = $db->get_laundry_log_inv_limit();
 
 			$occupying_users = $db->get_now_occupying_users();
 
@@ -30,9 +35,19 @@
 
 			$laundrys = $this->free_laundry();
 
+			$type = $_SESSION['user']->getType();
+
+			if($type=='admin')
+			{
+				$is_admin=true;
+			}
+			else
+			{
+				$is_admin=false;
+			}
 
 
-			return $this->render([$array, $laundrys, $occupys_laundry], 'laundry');
+			return $this->render([$array, $laundrys, $occupys_laundry,$is_admin], 'laundry');
 		}
 
 		private function free_laundry()
@@ -80,5 +95,6 @@
 			$url = "http://$_SERVER[HTTP_HOST]/";
 			header("Location: {$url}/DormitoryNotebooks?page=laundry");
 		}
+
 
 	}
