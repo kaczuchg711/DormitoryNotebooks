@@ -47,7 +47,6 @@
 							'controller' => 'LaundryController',
 							'action' => 'cancel_laundry'
 						],
-
 				];
 		}
 

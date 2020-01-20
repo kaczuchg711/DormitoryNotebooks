@@ -88,7 +88,7 @@
 
 			if($result->rowCount() == 0)
 			{
-				return ;
+				return;
 			}
 
 			$size = $result->rowCount();
@@ -145,7 +145,7 @@
 				}
 			}
 
-			return new User($vars[0], $vars[1], $vars[2], $vars[3], $vars[4], $vars[5], $vars[6],$vars[7]);
+			return new User($vars[0], $vars[1], $vars[2], $vars[3], $vars[4], $vars[5], $vars[6], $vars[7]);
 
 		}
 
@@ -227,10 +227,9 @@
 		{
 			$id = $_SESSION['user']->getId();
 
-
 			$query1 = "call last_book_laundry('$id',@a)";
 			$query25 = "select @a";
-			$query2 = 	"UPDATE Dorm.Laundries_logs t
+			$query2 = "UPDATE Dorm.Laundries_logs t
 						SET t.end_time_occupancy = (CURRENT_TIME -1)
 						WHERE t.id_occupying_user = '$id'
 						and id_laundries_logs = @a;";
@@ -242,7 +241,6 @@
 			$data = $this->conn->query($query25);
 
 			$result = $data->fetchAll(PDO::FETCH_ASSOC);
-
 
 			$this->conn->query($query2);
 
@@ -275,11 +273,17 @@
 			return $id_users;
 
 		}
+
+		public function check_email($email)
+		{
+			$query = "select count(*) from Users where email = '$email'";
+
+			$this->connect();
+			$data = $this->conn->query($query);
+			$this->disconnect();
+
+			$result = $data->fetchAll(PDO::FETCH_ASSOC);
+
+			return $result[0];
+		}
 	}
-//	$x = new Database();
-//	$y = $x->get_last_occupy_users();
-//
-//	foreach($y as $z)
-//	{
-//		echo $z;
-//	}

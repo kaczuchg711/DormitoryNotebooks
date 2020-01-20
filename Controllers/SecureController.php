@@ -61,7 +61,12 @@
 
 		public function check_login()
 		{
-			echo json_encode("tak");
+			$email = $_POST['email'];
+			$db = new Database();
+
+			$res = $db->check_email($email);
+
+			echo json_encode($res["count(*)"]);
 		}
 
 	}

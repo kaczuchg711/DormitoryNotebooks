@@ -132,6 +132,17 @@ div.registration_blue_bar p
     background: rgb(0, 105, 217);
 }
 
+#ajax_result
+{
+    color: red;
+    min-height: 24px;
+}
+#haslo
+{
+    padding-top: 0px;
+}
+
+
 
 @media screen and (max-width: 900px)
 {

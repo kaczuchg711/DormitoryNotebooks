@@ -34,12 +34,13 @@
 				<p>e-mail</p>
 				<input id="email" name="email" type="text" placeholder="email@email.com" onfocusout="check_login()">
 
-				<p>hasło</p>
+				<div id="ajax_result">
+				</div>
+
+				<p id="haslo">hasło</p>
 				<input name="password" placeholder="password" type="password">
 
-				<div id="ajax_result">
 
-				</div>
 
 				<button type="submit" class="btn btn-primary">Zaloguj</button>
 
